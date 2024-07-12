@@ -1,0 +1,1 @@
+H = Aircraft.CruiseAlt*0.3048

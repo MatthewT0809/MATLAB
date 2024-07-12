@@ -1,0 +1,23 @@
+x = linspace(0.25,2.25,9);
+%Vector of X by a linspace function as they are all eventually apart from
+%each other
+y = [1.5 4.49 7.2 10.49 13.20 16.35 19.05 22.49 25.71];
+%Vector of Y
+p = polyfit(x,y, 1);
+% Determines the (Coeffiecent of line of best fit) between the vectors through the use of polyfit,
+% Degree as 1 as it dipicts a linear line.
+p2 = polyval(p,x);
+% polyval uses the coefficients to illustrate the line of best fit on the graph 
+figure
+plot(x,y, 'o')
+title('Probes sensitivity')
+xlabel('Voltage (V)')
+ylabel('Gap (mm)')
+hold on
+plot(x,p2)
+
+s = P(1);
+disp(['Sensitivity/Gradient Of Slope = ' num2str(s) ' V/mm'])
+
+z = interp1(x, p2, 0, "linear", "extrap");
+disp(['Zerogap at ' num2str(z) ' V'])
